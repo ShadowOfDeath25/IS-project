@@ -1,0 +1,7 @@
+#create database Cinema
+#CREATE TABLE users (u_id INT PRIMARY KEY auto_increment NOT NULL, u_name varchar(50) NOT NULL, u_username varchar(50) UNIQUE NOT NULL , u_password varchar(100) NOT NULL,u_role varchar(15) NOT NULL);
+#CREATE TABLE movies	(m_id int PRIMARY KEY auto_increment NOT NULL , m_title varchar(50) NOT NULL ,m_cover varchar (100) NOT NULL ,times varchar(20));
+#CREATE TABLE tickets (t_no INT primary key auto_increment NOT NULL , m_id int references movies.m_id,u_id int references users.u_id );
+#ALTER TABLE tickets ADD COLUMN (hall varchar(20)); 
+#ALTER TABLE movies DROP COLUMN times;
+#CREATE TABLE times (m_time varchar(12),hall varchar(20),m_id int references movies.m_id);

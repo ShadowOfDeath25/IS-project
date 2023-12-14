@@ -5,3 +5,4 @@
 #ALTER TABLE tickets ADD COLUMN (hall varchar(20)); 
 #ALTER TABLE movies DROP COLUMN times;
 #CREATE TABLE times (m_time varchar(12),hall varchar(20),m_id int references movies.m_id);
+#ALTER TABLE users ADD COLUMN (u_age int not null , u_phone varchar(20),u_gender varchar(10)); 

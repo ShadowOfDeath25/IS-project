@@ -4,12 +4,14 @@
  */
 package cinema;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.*;
 import java.awt.Font;
 import java.sql.*;
 import java.awt.Graphics;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -24,6 +26,8 @@ ImageIcon showIcon;
 ImageIcon hideIcon;
 ImageIcon logInIcon;
 SignUp sign = new SignUp();
+JLabel lbl = new JLabel("TEST");
+BorderLayout border = new BorderLayout();
 /**
      * Creates new form Login
      */
@@ -33,6 +37,13 @@ SignUp sign = new SignUp();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         pass.setBackground(new java.awt.Color(0,0,0,1));
+       
+          lbl.setVisible(true);
+        mainPanel.add(lbl);
+        
+       
+        
+        
         
         logInImage = new ImageIcon("src/login.png").getImage();
         showPword= new ImageIcon("src/show.png").getImage();
@@ -68,20 +79,28 @@ SignUp sign = new SignUp();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new JPanel(){  @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Specify the path to your image file here
+                ImageIcon img = new ImageIcon("src/Pure Lust.jpg");
+                g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
+            }
+        };
         jButton1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         mainPanel = new JPanel(){  @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Specify the path to your image file here
-                ImageIcon img = new ImageIcon("src/Sea Blue.jpg");
+                ImageIcon img = new ImageIcon("src/Pure Lust.jpg");
                 g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
             }
         };
         signUpButton = new javax.swing.JLabel();
+        mainLabel = new JLabel("BFCAI Cinemas");
+;
         logInButton = new javax.swing.JLabel();
-        mainLabel = new javax.swing.JLabel();
         user = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -91,35 +110,13 @@ SignUp sign = new SignUp();
         showPass = new javax.swing.JCheckBox();
         jLabel3 = new javax.swing.JLabel();
 
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jButton1.setText("jButton1");
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 150, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(268, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(133, 133, 133))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(185, 185, 185)
-                .addComponent(jButton1)
-                .addContainerGap(215, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jButton2.setText("jButton2");
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, -1, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("BFCAI Cinema");
@@ -142,6 +139,12 @@ SignUp sign = new SignUp();
             }
         });
 
+        mainLabel.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 36)); // NOI18N
+        mainLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mainLabel.setText("BFCAI Cinema ");
+        mainLabel.setAlignmentX(100.0F);
+        mainLabel.setAlignmentY(5.0F);
+
         logInButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         logInButton.setText("Log In");
         logInButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -150,9 +153,6 @@ SignUp sign = new SignUp();
                 logInButtonMouseClicked(evt);
             }
         });
-
-        mainLabel.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 36)); // NOI18N
-        mainLabel.setText("BFCAI Cinema ");
 
         user.setBackground(new java.awt.Color(0, 0, 0));
         user.setToolTipText("");
@@ -176,41 +176,44 @@ SignUp sign = new SignUp();
         jLabel3.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jLabel3.setText("Don't have an account ?");
 
+        mainLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addContainerGap(170, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addComponent(mainLabel))
-                            .addComponent(jLabel2)
-                            .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel1)
-                                .addComponent(user)
-                                .addComponent(jSeparator1)
-                                .addGroup(mainPanelLayout.createSequentialGroup()
-                                    .addComponent(pass)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(showPass))
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3)
-                            .addComponent(signUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(157, 157, 157))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                         .addComponent(logInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGap(29, 29, 29))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addComponent(mainLabel)
+                        .addGap(305, 305, 305))))
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(262, 262, 262)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(signUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(user, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(showPass))
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(109, 109, 109)
                 .addComponent(mainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
+                .addGap(58, 58, 58)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -228,10 +231,12 @@ SignUp sign = new SignUp();
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(signUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(logInButton, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(logInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        // just to see where this goes 
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -245,6 +250,7 @@ SignUp sign = new SignUp();
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void showPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPassActionPerformed
@@ -266,7 +272,8 @@ SignUp sign = new SignUp();
     private void signUpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpButtonMouseClicked
         
         mainPanel.setVisible(false);
-        this.setContentPane(jPanel1);
+        //this.setSize(sign.getWidth(),sign.getHeight());
+        this.setContentPane(sign.getContentPane());
     }//GEN-LAST:event_signUpButtonMouseClicked
 
     private void logInButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInButtonMouseClicked
@@ -302,8 +309,8 @@ SignUp sign = new SignUp();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-              new Login().setVisible(true);
+            public  void run() {
+             new Login().setVisible(true);
              
             }
         });
@@ -311,10 +318,10 @@ SignUp sign = new SignUp();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

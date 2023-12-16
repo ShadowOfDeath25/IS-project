@@ -12,7 +12,12 @@ import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import java.awt.Graphics ;
 import java.awt.Image;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
+import java.sql.*;
+import java.util.Base64;
 
 /**
  *
@@ -23,7 +28,8 @@ public class Signup extends javax.swing.JFrame {
     ImageIcon hidePass ;
     Image showPass2;
     Image hidePass2;
-    
+    Connection con ;
+    PreparedStatement pst;
     
     public Signup() {
         initComponents();
@@ -62,11 +68,19 @@ public class Signup extends javax.swing.JFrame {
         
         
         
+        
         ButtonGroup btns= new ButtonGroup();
         btns.add(male);
         btns.add(female);
         
-        confirm.setEnabled(false);
+        
+        // Database Connection  (اللي هيعدل الكود ده هنيكه )
+     try{
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3308/cinema","root","root");
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(this,"Connection to the database failed , please restart the app \nif this error occurs again please consult a technichan");
+        }
+      
        
         
         
@@ -130,32 +144,12 @@ public class Signup extends javax.swing.JFrame {
         mainLabel.setAlignmentY(5.0F);
 
         username.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        username.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                ActionPerformed(evt);
-            }
-        });
 
         age.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        age.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                ActionPerformed(evt);
-            }
-        });
 
         phoneNum.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        phoneNum.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                ActionPerformed(evt);
-            }
-        });
 
         fullName.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        fullName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                ActionPerformed(evt);
-            }
-        });
 
         jLabel1.setText("Username");
 
@@ -170,11 +164,6 @@ public class Signup extends javax.swing.JFrame {
         jLabel6.setText("Confirm password");
 
         password.setBorder(null);
-        password.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                ActionPerformed(evt);
-            }
-        });
 
         showPassword1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,11 +172,6 @@ public class Signup extends javax.swing.JFrame {
         });
 
         confirmPassword.setBorder(null);
-        confirmPassword.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                ActionPerformed(evt);
-            }
-        });
 
         showPassword2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,6 +196,11 @@ public class Signup extends javax.swing.JFrame {
         });
 
         confirm.setText("Sign up");
+        confirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmActionPerformed(evt);
+            }
+        });
 
         mainLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -385,14 +374,66 @@ public class Signup extends javax.swing.JFrame {
         new Login().setVisible(true);
     }//GEN-LAST:event_backActionPerformed
 
-    private void ActionPerformed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ActionPerformed
-        if ((username.getText().length()>0) && (password.getText().length()>0)&&(age.getText().length()>0)&& (phoneNum.getText().length()>0)&&(confirmPassword.getText().length()>0)&&(fullName.getText().length()>0)&&(male.isSelected()||female.isSelected()) ){
-            confirm.setEnabled(true);
-        }
+    private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
+         
+       
+         if ((username.getText().length()>0) && (password.getText().length()>0)&&(age.getText().length()>0)&& (phoneNum.getText().length()>0)&&(confirmPassword.getText().length()>0)&&(fullName.getText().length()>0)&&(male.isSelected()||female.isSelected()) ){
+           
+             if (!password.getText().equals(confirmPassword.getText())){
+                 JOptionPane.showMessageDialog(this, "Passowrd don't match");
+             }else {
+                 try{
+                 pst= con.prepareStatement("INSERT INTO users(u_username,u_password,u_role,u_age,u_phone,u_gender,u_name) VALUES (?,?,?,?,?,?,?)");
+                 pst.setString(1, username.getText());
+                 try{
+                 pst.setString(2, hashPassword(password.getText()));
+                 }catch(NoSuchAlgorithmException e){
+                     JOptionPane.showMessageDialog(this, "Password hashing failed");
+                 }
+                 pst.setString(3, "User");
+                 pst.setInt(4,Integer.parseInt( age.getText()));
+                 pst.setString(5,phoneNum.getText());
+                 pst.setString(7,fullName.getText());
+                 if (male.isSelected()){
+                     pst.setString(6, "Male");
+                 }else if (female.isSelected()){
+                     pst.setString(6, "Female");
+                 }
+                 pst.execute();
+                 JOptionPane.showMessageDialog(this, "You signed up sucssessfully");
+                 }catch(SQLException e){
+                     JOptionPane.showMessageDialog(this, "Something went wrong \n"+e);
+                 }                 
+                 
+                 
+                 
+             }
+             
+             
+             
+        }else {
+             JOptionPane.showMessageDialog(this, "one or more fields are empty" );
+         }
         
         
-    }//GEN-LAST:event_ActionPerformed
+       
+    }//GEN-LAST:event_confirmActionPerformed
 
+        public static String hashPassword(String password) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] hashedPassword = md.digest(password.getBytes());
+        return Base64.getEncoder().encodeToString(hashedPassword);
+    }
+        public static boolean verifyPassword(String candidate, String hashedPassword) throws NoSuchAlgorithmException {
+        String hashedCandidate = hashPassword(candidate);
+        return hashedCandidate.equals(hashedPassword);
+    }
+    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */

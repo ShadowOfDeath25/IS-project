@@ -315,6 +315,7 @@ PreparedStatement pst ;
                        JOptionPane.showMessageDialog(this, "You have logged in successfully");
                    }else {
                        JOptionPane.showMessageDialog(this, "Wrong username or password");
+                       pass.setText("");
                    }
                    }catch(NoSuchAlgorithmException e){
                        JOptionPane.showMessageDialog(this, "Something went wrong");

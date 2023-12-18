@@ -11,6 +11,9 @@ import javax.swing.*;
 import java.awt.Font;
 import java.sql.*;
 import java.awt.Graphics;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -25,9 +28,12 @@ Image logInImage ;
 ImageIcon showIcon;
 ImageIcon hideIcon;
 ImageIcon logInIcon;
-SignUp sign = new SignUp();
 JLabel lbl = new JLabel("TEST");
-BorderLayout border = new BorderLayout();
+
+Connection con ;
+PreparedStatement pst ;
+
+
 /**
      * Creates new form Login
      */
@@ -41,7 +47,20 @@ BorderLayout border = new BorderLayout();
           lbl.setVisible(true);
         mainPanel.add(lbl);
         
+        
+        
+        
+        // Database Connection (اللي هيعدل الكود ده هنيكه)
+       try{
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3308/cinema","root","root");
        
+        }catch(SQLException e){
+           JOptionPane.showMessageDialog(this, "Connection to the database failed , please restart the app \nif this error occurs again please consult a technichan");
+            
+        }
+       
+        
+        
         
         
         
@@ -69,6 +88,18 @@ BorderLayout border = new BorderLayout();
         
         
     }
+    
+        public static String hashPassword(String password) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] hashedPassword = md.digest(password.getBytes());
+        return Base64.getEncoder().encodeToString(hashedPassword);
+        }
+    
+         public static boolean verifyPassword(String candidate, String hashedPassword) throws NoSuchAlgorithmException {
+        String hashedCandidate = hashPassword(candidate);
+        return hashedCandidate.equals(hashedPassword);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -183,15 +214,6 @@ BorderLayout border = new BorderLayout();
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addComponent(logInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addComponent(mainLabel)
-                        .addGap(305, 305, 305))))
-            .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(262, 262, 262)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
@@ -207,6 +229,11 @@ BorderLayout border = new BorderLayout();
                         .addComponent(showPass))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(265, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
+            .addComponent(mainLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,13 +298,46 @@ BorderLayout border = new BorderLayout();
 
     private void signUpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpButtonMouseClicked
         
-        mainPanel.setVisible(false);
-        //this.setSize(sign.getWidth(),sign.getHeight());
-        this.setContentPane(sign.getContentPane());
+        Signup sign = new Signup ();
+       this.dispose();
+       sign.setVisible(true);
     }//GEN-LAST:event_signUpButtonMouseClicked
 
     private void logInButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInButtonMouseClicked
-        JOptionPane.showMessageDialog(this, "not done yet");
+        if (user.getText().length()>0&&pass.getText().length()>0){
+            try{
+                pst = con.prepareStatement("SELECT*FROM users WHERE u_username=?");
+                pst.setString(1,user.getText());
+                ResultSet result=  pst.executeQuery();
+               while(result.next()){
+                   try{
+                   if (verifyPassword(pass.getText(),result.getString(4))){
+                       JOptionPane.showMessageDialog(this, "You have logged in successfully");
+                   }else {
+                       JOptionPane.showMessageDialog(this, "Wrong username or password");
+                       pass.setText("");
+                   }
+                   }catch(NoSuchAlgorithmException e){
+                       JOptionPane.showMessageDialog(this, "Something went wrong");
+                   }
+               }
+              
+                
+            }catch(SQLException e){
+               JOptionPane.showMessageDialog(this, "This username isn't registered"+e);
+            }
+            
+            
+         
+        }else {
+            JOptionPane.showMessageDialog(this, "One or more Fields is empty");
+        }
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_logInButtonMouseClicked
 
     /**

@@ -65,7 +65,7 @@ public class Signup extends javax.swing.JFrame {
 
         // Database Connection  (اللي هيعدل الكود ده هنيكه )
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3308/cinema", "root", "root");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema", "root", "root");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Connection to the database failed , please restart the app \nif this error occurs again please consult a technichan");
         }

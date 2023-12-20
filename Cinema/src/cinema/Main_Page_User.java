@@ -15,6 +15,8 @@ public class Main_Page_User extends javax.swing.JFrame {
      */
     public Main_Page_User() {
         initComponents();
+        this.setLocationRelativeTo(null);
+               
     }
 
     /**

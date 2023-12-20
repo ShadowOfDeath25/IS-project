@@ -52,7 +52,7 @@ PreparedStatement pst ;
         
         // Database Connection (اللي هيعدل الكود ده هنيكه)
        try{
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3308/cinema","root","root");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema","root","root");
        
         }catch(SQLException e){
            JOptionPane.showMessageDialog(this, "Connection to the database failed , please restart the app \nif this error occurs again please consult a technichan");
@@ -313,6 +313,8 @@ PreparedStatement pst ;
                    try{
                    if (verifyPassword(pass.getText(),result.getString(4))){
                        JOptionPane.showMessageDialog(this, "You have logged in successfully");
+                       this.dispose();
+                       new Main_Page_User().setVisible(true);
                    }else {
                        JOptionPane.showMessageDialog(this, "Wrong username or password");
                        pass.setText("");

@@ -3,7 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package cinema;
-
+import java.awt.Color;
+import java.awt.Image;
+import javax.swing.*;
+import java.awt.Font;
+import java.sql.*;
+import java.awt.Graphics;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 /**
  *
  * @author Abdelrahman Magdy

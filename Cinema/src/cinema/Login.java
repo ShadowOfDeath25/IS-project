@@ -52,7 +52,7 @@ PreparedStatement pst ;
         
         // Database Connection (اللي هيعدل الكود ده هنيكه)
        try{
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema","root","root");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema","root","");
        
         }catch(SQLException e){
            JOptionPane.showMessageDialog(this, "Connection to the database failed , please restart the app \nif this error occurs again please consult a technichan");
@@ -304,17 +304,19 @@ PreparedStatement pst ;
     }//GEN-LAST:event_signUpButtonMouseClicked
 
     private void logInButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInButtonMouseClicked
+        ResultSet result;
         if (user.getText().length()>0&&pass.getText().length()>0){
             try{
                 pst = con.prepareStatement("SELECT*FROM users WHERE u_username=?");
                 pst.setString(1,user.getText());
-                ResultSet result=  pst.executeQuery();
+                result=  pst.executeQuery();
                while(result.next()){
                    try{
                    if (verifyPassword(pass.getText(),result.getString(4))){
                        JOptionPane.showMessageDialog(this, "You have logged in successfully");
                        this.dispose();
-                       new Main_Page_User().setVisible(true);
+                       User user = new User(result,pass.getText());
+                       new mainPage().setVisible(true);
                    }else {
                        JOptionPane.showMessageDialog(this, "Wrong username or password");
                        pass.setText("");

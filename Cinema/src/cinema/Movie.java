@@ -37,7 +37,7 @@ public class Movie extends JLabel{
         g.drawImage(coverIcon.getImage(), borderThickness,borderThickness,null);
         g.dispose();
         ImageIcon borderedIcon = new ImageIcon (borderedImage.getScaledInstance(100,200, Image.SCALE_SMOOTH));
-        this.setIcon(borderedIcon);
+        this.setIcon(coverIcon);
         this.setFont(new Font ("Tw Cen MT Condensed", Font.BOLD, 14));
         this.setVerticalTextPosition(JLabel.BOTTOM);
         this.setHorizontalTextPosition(JLabel.CENTER);

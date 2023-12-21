@@ -52,7 +52,7 @@ PreparedStatement pst ;
         
         // Database Connection (اللي هيعدل الكود ده هنيكه)
        try{
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema","root","");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema","root","abdonwar123");
        
         }catch(SQLException e){
            JOptionPane.showMessageDialog(this, "Connection to the database failed , please restart the app \nif this error occurs again please consult a technichan");

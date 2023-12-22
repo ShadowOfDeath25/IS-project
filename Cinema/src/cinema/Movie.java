@@ -8,9 +8,13 @@ import javax.swing.ImageIcon ;
 import java.awt.Image ;
 import javax.swing.BorderFactory;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.awt.Graphics2D;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
 /**
  *
  * @author abdo2
@@ -21,7 +25,7 @@ public class Movie extends JLabel{
     
     
     public Movie(String coverPath , String title){
-        
+         
         this.setText(title);
         this.setSize(100,220);
         cover = new ImageIcon(coverPath).getImage();
@@ -41,6 +45,27 @@ public class Movie extends JLabel{
         this.setFont(new Font ("Tw Cen MT Condensed", Font.BOLD, 14));
         this.setVerticalTextPosition(JLabel.BOTTOM);
         this.setHorizontalTextPosition(JLabel.CENTER);
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        this.addMouseListener(new MouseAdapter(){
+        @Override 
+        public void mouseClicked(MouseEvent e){
+            JOptionPane.showMessageDialog(null, "TBD");
+        }
+        @Override 
+        public void mouseEntered(MouseEvent e){
+          setText("<HTML><U>"+title+"</U></HTML>");
+        }
+        
+        @Override 
+        public void mouseExited(MouseEvent e){
+            setText(title);
+        }
+        
+        });
+        
+        
+        
+        
     }
     
     

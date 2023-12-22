@@ -293,7 +293,7 @@ public class Login extends javax.swing.JFrame {
                 pst = con.prepareStatement("SELECT*FROM users WHERE u_username=?");
                 pst.setString(1, user.getText());
                 result = pst.executeQuery();
-                if (result.next()){
+                if (result.next()) {
                     try {
                         if (verifyPassword(pass.getText(), result.getString(4))) {
                             JOptionPane.showMessageDialog(this, "You have logged in successfully");
@@ -306,9 +306,13 @@ public class Login extends javax.swing.JFrame {
                             User.getInstance().setPhoneNum(result.getString("u_phone"));
                             User.getInstance().setRole(result.getString("u_role"));
                             User.getInstance().setAge(result.getInt("u_age"));
-
-                            this.dispose();
-                            new mainPage().setVisible(true);
+                            if (result.getString("u_role").equals("User")) {
+                                this.dispose();
+                                new mainPage().setVisible(true);
+                            } else {
+                                this.dispose();
+                                new AdminMainPage().setVisible(true);
+                            }
                         } else {
                             JOptionPane.showMessageDialog(this, "Wrong username or password");
                             pass.setText("");
@@ -316,7 +320,7 @@ public class Login extends javax.swing.JFrame {
                     } catch (NoSuchAlgorithmException e) {
                         JOptionPane.showMessageDialog(this, "Something went wrong");
                     }
-                }else {
+                } else {
                     JOptionPane.showMessageDialog(this, "This username isn't registered\n Please enter a valid username or Sign Up");
                 }
             } catch (SQLException e) {

@@ -41,17 +41,17 @@ public class mainPage extends javax.swing.JFrame {
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(10);
        // moviesPanel.setBackground(new Color(0, 0, 0, 1));
         moviesPanel.setOpaque(false);
-        jLabel2.setText(thisUser.getInstance().getFullName());
+        jLabel2.setText(User.getInstance().getFullName());
         jScrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         jScrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         moviesPanel.setLayout(new WrapLayout(FlowLayout.LEFT));
         //moviesPanel.setOpaque(false);
         for (int i = 0; i < 50; i++) {
-            moviesPanel.add(new Movie("src/Avengers.png", "Avengers:infinty war"));
+            moviesPanel.add(new Movie("src/Avengers.png", "Avengers : infinty war"));
         }
         try {
 
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema", "root", "280904");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema", "root", "");
             pst = con.prepareStatement("SELECT * FROM movies");
             ResultSet result = pst.executeQuery();
             while (result.next()) {
@@ -60,7 +60,7 @@ public class mainPage extends javax.swing.JFrame {
             }
 
         } catch (SQLException e) {
-            System.out.println(e);
+           JOptionPane.showMessageDialog(this ,"Couldn't load movies due to an error at the database\nPlease consult a technichan");
         }
 
     }
@@ -90,7 +90,7 @@ public class mainPage extends javax.swing.JFrame {
             @Override
             protected void paintComponent(java.awt.Graphics g) {
                 super.paintComponent(g);
-                javax.swing.ImageIcon backgroundIcon = new javax.swing.ImageIcon("trans.png");
+                javax.swing.ImageIcon backgroundIcon = new javax.swing.ImageIcon("src/trans.png");
                 g.drawImage(backgroundIcon.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -116,7 +116,7 @@ public class mainPage extends javax.swing.JFrame {
         );
         moviesPanelLayout.setVerticalGroup(
             moviesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 397, Short.MAX_VALUE)
+            .addGap(0, 435, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(moviesPanel);
@@ -151,7 +151,7 @@ public class mainPage extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addComponent(jLabel2)))
                 .addGap(96, 96, 96)
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
                 .addGap(31, 31, 31))
         );
 

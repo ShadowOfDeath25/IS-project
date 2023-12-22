@@ -4,7 +4,6 @@
  */
 package cinema;
 
-
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.*;
@@ -16,90 +15,73 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author abdo2
  */
 public class Login extends javax.swing.JFrame {
-Image showPword;
-Image hidePword;
-Image logInImage ;
-ImageIcon showIcon;
-ImageIcon hideIcon;
-ImageIcon logInIcon;
-JLabel lbl = new JLabel("TEST");
 
-Connection con ;
-PreparedStatement pst ;
+    Image showPword;
+    Image hidePword;
+    Image logInImage;
+    ImageIcon showIcon;
+    ImageIcon hideIcon;
+    ImageIcon logInIcon;
+    JLabel lbl = new JLabel("TEST");
 
+    Connection con;
+    PreparedStatement pst;
 
-/**
+    /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
-        user.setBackground(new java.awt.Color(0,0,0,1));
+        user.setBackground(new java.awt.Color(0, 0, 0, 1));
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        pass.setBackground(new java.awt.Color(0,0,0,1));
-       
-          lbl.setVisible(true);
+        pass.setBackground(new java.awt.Color(0, 0, 0, 1));
+
+        lbl.setVisible(true);
         mainPanel.add(lbl);
-        
-        
-        
-        
-        // Database Connection (اللي هيعدل الكود ده هنيكه)
-       try{
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema","root","280904");
-       
-        }catch(SQLException e){
-           JOptionPane.showMessageDialog(this, "Connection to the database failed , please restart the app \nif this error occurs again please consult a technichan");
-            
+
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema", "root", "");
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Connection to the database failed , please restart the app \nif this error occurs again please consult a technichan");
+
         }
-       
-        
-        
-        
-        
-        
+
         logInImage = new ImageIcon("src/login.png").getImage();
-        showPword= new ImageIcon("src/show.png").getImage();
+        showPword = new ImageIcon("src/show.png").getImage();
         hidePword = new ImageIcon("src/hide.png").getImage();
-        showIcon = new ImageIcon(showPword.getScaledInstance(showPass.getWidth(),showPass.getHeight() , Image.SCALE_SMOOTH));
-        hideIcon = new ImageIcon(hidePword.getScaledInstance(showPass.getWidth(),showPass.getHeight() , Image.SCALE_SMOOTH));
-        logInIcon= new ImageIcon(logInImage.getScaledInstance(logInButton.getWidth(),logInButton.getHeight()-30, Image.SCALE_SMOOTH));
-       
+        showIcon = new ImageIcon(showPword.getScaledInstance(showPass.getWidth(), showPass.getHeight(), Image.SCALE_SMOOTH));
+        hideIcon = new ImageIcon(hidePword.getScaledInstance(showPass.getWidth(), showPass.getHeight(), Image.SCALE_SMOOTH));
+        logInIcon = new ImageIcon(logInImage.getScaledInstance(logInButton.getWidth(), logInButton.getHeight() - 30, Image.SCALE_SMOOTH));
+
         showPass.setIcon(showIcon);
         showPass.setSelectedIcon(hideIcon);
-        
+
         logInButton.setIcon(logInIcon);
         logInButton.setText("     Log In");
         logInButton.setVerticalTextPosition(JLabel.BOTTOM);
         logInButton.setHorizontalTextPosition(JLabel.CENTER);
-       
-        
-        
-        
-        
-       
+
         showPass.setFocusable(false);
-        
-        
+
     }
-    
-        public static String hashPassword(String password) throws NoSuchAlgorithmException {
+
+    public static String hashPassword(String password) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         byte[] hashedPassword = md.digest(password.getBytes());
         return Base64.getEncoder().encodeToString(hashedPassword);
-        }
-    
-         public static boolean verifyPassword(String candidate, String hashedPassword) throws NoSuchAlgorithmException {
+    }
+
+    public static boolean verifyPassword(String candidate, String hashedPassword) throws NoSuchAlgorithmException {
         String hashedCandidate = hashPassword(candidate);
         return hashedCandidate.equals(hashedPassword);
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -281,9 +263,9 @@ PreparedStatement pst ;
     }// </editor-fold>//GEN-END:initComponents
 
     private void showPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPassActionPerformed
-        if (showPass.isSelected()){
-        pass.setEchoChar((char)0);
-        }else {
+        if (showPass.isSelected()) {
+            pass.setEchoChar((char) 0);
+        } else {
             pass.setEchoChar('*');
         }
     }//GEN-LAST:event_showPassActionPerformed
@@ -297,51 +279,55 @@ PreparedStatement pst ;
     }//GEN-LAST:event_signUpButtonMouseExited
 
     private void signUpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpButtonMouseClicked
-        
-        Signup sign = new Signup ();
-       this.dispose();
-       sign.setVisible(true);
+
+        this.dispose();
+        new Signup().setVisible(true);
     }//GEN-LAST:event_signUpButtonMouseClicked
 
     private void logInButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInButtonMouseClicked
         ResultSet result;
-        if (user.getText().length()>0&&pass.getText().length()>0){
-            try{
+
+        if (user.getText().length() > 0 && pass.getText().length() > 0) {
+
+            try {
                 pst = con.prepareStatement("SELECT*FROM users WHERE u_username=?");
-                pst.setString(1,user.getText());
-                result=  pst.executeQuery();
-               while(result.next()){
-                   try{
-                   if (verifyPassword(pass.getText(),result.getString(4))){
-                       JOptionPane.showMessageDialog(this, "You have logged in successfully");
-                       this.dispose();
-                       User user = new User(result,pass.getText());
-                       new mainPage().setVisible(true);
-                   }else {
-                       JOptionPane.showMessageDialog(this, "Wrong username or password");
-                       pass.setText("");
-                   }
-                   }catch(NoSuchAlgorithmException e){
-                       JOptionPane.showMessageDialog(this, "Something went wrong");
-                   }
-               }
-              
-                
-            }catch(SQLException e){
-               JOptionPane.showMessageDialog(this, "This username isn't registered"+e);
+                pst.setString(1, user.getText());
+                result = pst.executeQuery();
+                if (result.next()){
+                    try {
+                        if (verifyPassword(pass.getText(), result.getString(4))) {
+                            JOptionPane.showMessageDialog(this, "You have logged in successfully");
+                            User.getInstance().setId(result.getInt(1));
+                            User.getInstance().setFullName(result.getString("u_name"));
+                            User.getInstance().setUsername(result.getString("u_username"));
+                            User.getInstance().setGender("u_gender");
+                            User.getInstance().setPassword(pass.getText());
+                            User.getInstance().setHashedPassword(result.getString("u_password"));
+                            User.getInstance().setPhoneNum(result.getString("u_phone"));
+                            User.getInstance().setRole(result.getString("u_role"));
+                            User.getInstance().setAge(result.getInt("u_age"));
+
+                            this.dispose();
+                            new mainPage().setVisible(true);
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Wrong username or password");
+                            pass.setText("");
+                        }
+                    } catch (NoSuchAlgorithmException e) {
+                        JOptionPane.showMessageDialog(this, "Something went wrong");
+                    }
+                }else {
+                    JOptionPane.showMessageDialog(this, "This username isn't registered\n Please enter a valid username or Sign Up");
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(this, "Something went wrong \n" + e);
             }
-            
-            
-         
-        }else {
+
+        } else {
             JOptionPane.showMessageDialog(this, "One or more Fields is empty");
         }
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_logInButtonMouseClicked
 
     /**
@@ -373,9 +359,9 @@ PreparedStatement pst ;
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public  void run() {
-             new Login().setVisible(true);
-             
+            public void run() {
+                new Login().setVisible(true);
+
             }
         });
     }

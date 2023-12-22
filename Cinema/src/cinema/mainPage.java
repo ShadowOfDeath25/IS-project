@@ -51,7 +51,7 @@ public class mainPage extends javax.swing.JFrame {
         }
         try {
 
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema", "root", "abdonwar123");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema", "root", "280904");
             pst = con.prepareStatement("SELECT * FROM movies");
             ResultSet result = pst.executeQuery();
             while (result.next()) {

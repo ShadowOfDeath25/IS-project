@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -20,7 +21,7 @@ public class Admin_Page extends javax.swing.JFrame {
     Connection con;
     PreparedStatement stmt ;
     ImageIcon image;
-    
+    ArrayList<Integer> Mid = new ArrayList<>();
     
     public Admin_Page() {
         initComponents();
@@ -35,8 +36,8 @@ public class Admin_Page extends javax.swing.JFrame {
        
         }catch(SQLException e){
            JOptionPane.showMessageDialog(this, "Connection to the database failed , please restart the app \nif this error occurs again please consult a technichan");
-            
         }
+        FillComboBox();
     }
     
     @SuppressWarnings("unchecked")
@@ -460,7 +461,19 @@ public class Admin_Page extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void FillComboBox(){
+        try {
+            PreparedStatement st = con.prepareStatement("select m_id , m_title from movies;");
+         ResultSet rss = st.executeQuery();
+         while(rss.next()) {
+             Mid.add(rss.getInt(1));
+             MovieList.addItem(rss.getString(2));
+             MovieList2.addItem(rss.getString(2));
+         }
+        } catch (SQLException ex) {
+            Logger.getLogger(Admin_Page.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     private void TextField_EditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextField_EditKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             Get_Content();

@@ -77,14 +77,7 @@ public class Admin_Page extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         Delete_Button1 = new javax.swing.JButton();
         Refresh_Button2 = new javax.swing.JButton();
-        jPanel2 = new JPanel(){  @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                // Specify the path to your image file here
-                ImageIcon img = new ImageIcon("C:\\Users\\Abdo Ayman\\OneDrive - Benha University (Faculty Of Computers & Information Technolgy)\\Documents\\GitHub\\IS-project\\Cinema\\src\\Cool Brown.jpg");
-                g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
-            }
-        };
+        jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         AddBtn = new javax.swing.JButton();
         MovieName = new javax.swing.JTextField();
@@ -632,9 +625,7 @@ public class Admin_Page extends javax.swing.JFrame {
        
              try {
                 PreparedStatement ps = con.prepareStatement("delete from movies where m_title = ? ;");
-                
-
-               String x = MovieList.getSelectedItem().toString(); // selceted index starts from zero
+               String x = MovieList.getSelectedItem().toString(); 
                 ps.setString(1, x);
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Deleted successfully");

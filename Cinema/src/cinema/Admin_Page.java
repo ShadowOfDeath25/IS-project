@@ -102,6 +102,7 @@ public class Admin_Page extends javax.swing.JFrame {
         NewMovieName = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         NewPhotoSource = new javax.swing.JTextField();
+        EditBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -352,6 +353,13 @@ public class Admin_Page extends javax.swing.JFrame {
             }
         });
 
+        EditBtn.setText("Edit");
+        EditBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -359,7 +367,11 @@ public class Admin_Page extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(MovieList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(MovieList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(71, 71, 71)
+                        .addComponent(DeleteBtn)
+                        .addContainerGap())
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                             .addComponent(AddBtn)
@@ -406,15 +418,17 @@ public class Admin_Page extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(165, 165, 165)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(138, 138, 138)
-                        .addComponent(DeleteBtn))
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(261, 261, 261)
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45)
                         .addComponent(MovieList2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(EditBtn)
+                .addGap(321, 321, 321))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -448,7 +462,9 @@ public class Admin_Page extends javax.swing.JFrame {
                     .addComponent(jLabel16)
                     .addComponent(NewMovieName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
-                .addGap(58, 58, 58))
+                .addGap(18, 18, 18)
+                .addComponent(EditBtn)
+                .addGap(17, 17, 17))
         );
 
         jTabbedPane1.addTab("Movies Managment", jPanel2);
@@ -572,7 +588,7 @@ public class Admin_Page extends javax.swing.JFrame {
 
     private void AddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBtnActionPerformed
         // TODO add your handling code here:
-        if(MovieName.getText()!=""&&PhotoSource.getText()!="") {
+        if(!MovieName.getText().isEmpty()&&!PhotoSource.getText().isEmpty()) {
              try {
                 PreparedStatement ps = con.prepareStatement("INSERT INTO movies(m_title,m_cover) values (?,?);");
                 ps.setString(1, MovieName.getText());
@@ -583,7 +599,30 @@ public class Admin_Page extends javax.swing.JFrame {
                 Logger.getLogger(Admin_Page.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        else {
+             JOptionPane.showMessageDialog(this, "Please provide data");
+        }
     }//GEN-LAST:event_AddBtnActionPerformed
+
+    private void EditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditBtnActionPerformed
+        // TODO add your handling code here:
+         if(!NewMovieName.getText().isEmpty()&&!NewPhotoSource.getText().isEmpty()) {
+             try {
+                PreparedStatement ps = con.prepareStatement("update movies set m_title=?,m_cover=? where m_id = ? ;");
+                ps.setString(1, NewMovieName.getText());
+                ps.setString(2, NewPhotoSource.getText());
+                int x = MovieList2.getSelectedIndex(); // selceted index starts from zero
+                ps.setInt(3,  x+1);
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Edited successfully");
+            } catch (SQLException ex) {
+                Logger.getLogger(Admin_Page.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+                JOptionPane.showMessageDialog(this, "Please provide data");
+         }
+    }//GEN-LAST:event_EditBtnActionPerformed
+    
     
     private void Get_Content(){
         String name = null,gender,username = null,role = null,phone = null,password;
@@ -680,6 +719,7 @@ public class Admin_Page extends javax.swing.JFrame {
     private javax.swing.JButton AddBtn;
     private javax.swing.JButton DeleteBtn;
     private javax.swing.JButton Delete_Button1;
+    private javax.swing.JButton EditBtn;
     private javax.swing.JComboBox<String> MovieList;
     private javax.swing.JComboBox<String> MovieList2;
     private javax.swing.JTextField MovieName;

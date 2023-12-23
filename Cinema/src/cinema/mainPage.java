@@ -184,7 +184,7 @@ public class mainPage extends javax.swing.JFrame {
 
     private void showProfileData(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showProfileData
         this.dispose();
-     //   new ShowData(this.getUser()).setVisible(true);
+     new ShowData().setVisible(true);
     }//GEN-LAST:event_showProfileData
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed

@@ -48,7 +48,7 @@ public class AdminMainPage extends javax.swing.JFrame {
         }
         try {
 
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema", "root", "abdonwar123");
             pst = con.prepareStatement("SELECT * FROM movies");
             ResultSet result = pst.executeQuery();
             while (result.next()) {

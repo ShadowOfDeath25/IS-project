@@ -296,6 +296,11 @@ public class Admin_Page extends javax.swing.JFrame {
         jLabel3.setText("Add a movie");
 
         AddBtn.setText("Add ");
+        AddBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddBtnActionPerformed(evt);
+            }
+        });
 
         MovieName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -564,6 +569,21 @@ public class Admin_Page extends javax.swing.JFrame {
     private void NewPhotoSourceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewPhotoSourceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NewPhotoSourceActionPerformed
+
+    private void AddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBtnActionPerformed
+        // TODO add your handling code here:
+        if(MovieName.getText()!=""&&PhotoSource.getText()!="") {
+             try {
+                PreparedStatement ps = con.prepareStatement("INSERT INTO movies(m_title,m_cover) values (?,?);");
+                ps.setString(1, MovieName.getText());
+                ps.setString(2, PhotoSource.getText());
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Added successfully");
+            } catch (SQLException ex) {
+                Logger.getLogger(Admin_Page.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_AddBtnActionPerformed
     
     private void Get_Content(){
         String name = null,gender,username = null,role = null,phone = null,password;

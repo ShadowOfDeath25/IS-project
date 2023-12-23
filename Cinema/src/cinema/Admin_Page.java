@@ -329,6 +329,11 @@ public class Admin_Page extends javax.swing.JFrame {
         jLabel12.setText("Movie list");
 
         DeleteBtn.setText("Delete");
+        DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteBtnActionPerformed(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -622,6 +627,22 @@ public class Admin_Page extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Please provide data");
          }
     }//GEN-LAST:event_EditBtnActionPerformed
+
+    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
+       
+             try {
+                PreparedStatement ps = con.prepareStatement("delete from movies where m_title = ? ;");
+                
+
+               String x = MovieList.getSelectedItem().toString(); // selceted index starts from zero
+                ps.setString(1, x);
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Deleted successfully");
+            } catch (SQLException ex) {
+                Logger.getLogger(Admin_Page.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+    }//GEN-LAST:event_DeleteBtnActionPerformed
     
     
     private void Get_Content(){

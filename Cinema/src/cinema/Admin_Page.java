@@ -606,11 +606,11 @@ public class Admin_Page extends javax.swing.JFrame {
         // TODO add your handling code here:
          if(!NewMovieName.getText().isEmpty()&&!NewPhotoSource.getText().isEmpty()) {
              try {
-                PreparedStatement ps = con.prepareStatement("update movies set m_title=?,m_cover=? where m_id = ? ;");
+                PreparedStatement ps = con.prepareStatement("update movies set m_title=?,m_cover=? where m_title = ? ;");
                 ps.setString(1, NewMovieName.getText());
                 ps.setString(2, NewPhotoSource.getText());
-                int x = MovieList2.getSelectedIndex(); // selceted index starts from zero
-                ps.setInt(3,  x+1);
+                String x = MovieList2.getSelectedItem().toString(); 
+                ps.setString(3,  x);
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Edited successfully");
             } catch (SQLException ex) {

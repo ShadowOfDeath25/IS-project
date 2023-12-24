@@ -3,19 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package cinema;
+
 import java.sql.*;
+
 /**
  *
  * @author abdo2
  */
 public class User {
-  private static  User user ;
-   public static User getInstance(){
-       if (user==null){
-           user = new User();
-       }
-       return user ;
-   }
+
+    private static User user;
+
+    public static User getInstance() {
+        if (user == null) {
+            user = new User();
+        }
+        return user;
+    }
 
     public String getUsername() {
         return username;
@@ -88,38 +92,19 @@ public class User {
     public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
     }
-   
-   
-   
-   private String username ;
-   private String password;
-   private String hashedPassword; 
-   private int age ;
-   private String role ;
-   private String gender ;
-   private String fullName;
-   private int id ;
-   private String phoneNum ;
-    
-    public User(){
-     
-     
+
+    private String username;
+    private String password;
+    private String hashedPassword;
+    private int age;
+    private String role;
+    private String gender;
+    private String fullName;
+    private int id;
+    private String phoneNum;
+
+    public User() {
+
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-   
+
 }

@@ -63,7 +63,7 @@ public class Signup extends javax.swing.JFrame {
         btns.add(male);
         btns.add(female);
 
-        // Database Connection  (اللي هيعدل الكود ده هنيكه )
+       
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema", "root", "abdonwar123");
         } catch (SQLException e) {

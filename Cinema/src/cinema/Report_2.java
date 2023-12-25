@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package cinema;
-import javax.swing.table.DefaultTableModel;import java.awt.Color;
+
+import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
 import java.awt.Image;
 import javax.swing.*;
 import java.awt.Font;
@@ -21,92 +23,79 @@ import javax.swing.table.DefaultTableModel;
  * @author Abdelrahman Magdy
  */
 public class Report_2 extends javax.swing.JFrame {
-Connection con;
-DefaultTableModel dtm;
 
+    Connection con;
+    DefaultTableModel dtm;
+    static int totalTickets;
     /**
      * Creates new form Report_2
      */
     public Report_2() {
         initComponents();
-          this.setLocationRelativeTo(null);
-        dtm=new DefaultTableModel();
+        this.setLocationRelativeTo(null);
+        dtm = new DefaultTableModel();
         dtm.addColumn("User Name");
         dtm.addColumn("Movie Title");
         dtm.addColumn("Ticket Number");
         dtm.addColumn("Hall");
- try{
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema","root","280904");
-       
-        }catch(SQLException e){
-           JOptionPane.showMessageDialog(this, "Connection to the database failed , please restart the app \nif this error occurs again please consult a technichan");
-            
-        }
-      
-    }
-private void filltable(){
-try{
- PreparedStatement stmt = con.prepareStatement("select *from tickets");
- PreparedStatement stmt1 = con.prepareStatement("select m_title, m_id from movies");
- PreparedStatement stmt2 = con.prepareStatement("select u_name, u_id from users");
-  ResultSet rs =stmt.executeQuery();
-    if (!rs.isBeforeFirst()) {
-            System.out.println("ResultSet is empty");
-            return;
-        }
- while(rs.next()){
-      int u_id = rs.getInt("u_id");
-            int m_id = rs.getInt("m_id");
-            
-            
-            
-      PreparedStatement stmt4 = con.prepareStatement("SELECT u_name FROM users WHERE u_id = ?");
-             stmt4.setInt(1, u_id);
-             ResultSet rsUName = stmt4.executeQuery();
-               String u_name = "";
-            if (rsUName.next()) {
-                u_name = rsUName.getString("u_name");
-            }
-             
-             
-             
-             
-    PreparedStatement stmt5 = con.prepareStatement("SELECT m_title FROM movies WHERE m_id = ?");
-            stmt5.setInt(1, m_id);
-            ResultSet rsMTitle = stmt5.executeQuery();
-            String m_title = "";
-            if (rsMTitle.next()) {
-                m_title = rsMTitle.getString("m_title");
-            }
-   
-    int t_no = rs.getInt("t_no");
-    String hall = rs.getString("hall");
-
-    // Add the retrieved data to the DefaultTableModel
-    dtm.addRow(new Object[]{u_name, m_title, t_no, hall});
- }
- jTable2.setModel(dtm);
-} 
-   catch (SQLException ex) {
-        Logger.getLogger(Report_2.class.getName()).log(Level.SEVERE, null, ex);
-    }
-}
-
- private int getTotalTickets() {
-        int totalTickets = 0;
+        
         try {
-            PreparedStatement stmt = con.prepareStatement("SELECT SUM(t_no) AS total FROM tickets");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema", "root", "");
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Connection to the database failed , please restart the app \nif this error occurs again please consult a technichan");
+
+        }
+        
+
+    }
+
+    public void filltable() {
+        try {
+            PreparedStatement stmt = con.prepareStatement("select *from tickets");
+           
             ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                totalTickets = rs.getInt("total");
+            
+            if (!rs.isBeforeFirst()) {  
+                System.out.println("ResultSet is empty");
+                return;
             }
+            totalTickets = 0 ;
+            while (rs.next()) {
+                totalTickets ++ ;
+                int u_id = rs.getInt("u_id");
+                int m_id = rs.getInt("m_id");
 
+                PreparedStatement stmt4 = con.prepareStatement("SELECT u_name FROM users WHERE u_id = ?");
+                stmt4.setInt(1, u_id);
+                ResultSet rsUName = stmt4.executeQuery();
+                String u_name = "";
+                if (rsUName.next()) {
+                    u_name = rsUName.getString("u_name");
+                }
+
+                PreparedStatement stmt5 = con.prepareStatement("SELECT m_title FROM movies WHERE m_id = ?");
+                stmt5.setInt(1, m_id);
+                ResultSet rsMTitle = stmt5.executeQuery();
+                String m_title = "";
+                if (rsMTitle.next()) {
+                    m_title = rsMTitle.getString("m_title");
+                }
+
+                int t_no = rs.getInt("t_no");
+                String hall = rs.getString("hall");
+
+                // Add the retrieved data to the DefaultTableModel
+                dtm.addRow(new Object[]{u_name, m_title, t_no, hall});
+            }
+            jTable2.setModel(dtm);
         } catch (SQLException ex) {
             Logger.getLogger(Report_2.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return totalTickets;
     }
+
+ 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -253,15 +242,14 @@ try{
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {                     
-            Report_2 reportFrame = new Report_2();
-                 reportFrame.filltable(); 
-                 
-                     int totalTickets = reportFrame.getTotalTickets();
+            public void run() {
+                Report_2 reportFrame = new Report_2();
+                reportFrame.filltable();
+
+                
                 reportFrame.jLabel2.setText("Total Tickets:  " + totalTickets);
-                
-                
-                 reportFrame.setVisible(true);
+
+                reportFrame.setVisible(true);
             }
         });
     }
@@ -275,5 +263,8 @@ try{
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 
-  
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
 }

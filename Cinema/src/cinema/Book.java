@@ -38,7 +38,7 @@ public class Book extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         //Image icon = new ImageIcon(this.getClass().getResource("\\popcorn.png")).getImage();
-       // this.setIconImage(icon);
+        // this.setIconImage(icon);
         currMovie = movie;
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema", "root", "");
@@ -254,7 +254,7 @@ public class Book extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (radio1_h1.isSelected() || radio2_h1.isSelected() || radio3_h1.isSelected() || radio1_h2.isSelected() || radio2_h2.isSelected() || radio3_h2.isSelected() || radio1_h3.isSelected() || radio2_h3.isSelected() || radio3_h3.isSelected() || radio1_h2.isSelected()) {
-            //JOptionPane.showMessageDialog(this, "Your ticket has been booked successfully");
+
             try {
                 pst = con.prepareStatement("SELECT * FROM movies WHERE m_title = ?");
                 pst.setString(1, currMovie.movieTitle);
@@ -269,7 +269,7 @@ public class Book extends javax.swing.JFrame {
                 pst = con.prepareStatement(" insert into tickets(m_id,u_id,hall,times) values( ? , ? , ?,? )");
                 pst.setInt(2, User.getInstance().getId());
                 if (res.next()) {
-                    pst.setInt(1, res.getInt("m_id"));
+                    pst.setInt(1, res.getInt(1));
                 } else {
                     JOptionPane.showMessageDialog(this, "Movie not found");
                 }
@@ -311,24 +311,32 @@ public class Book extends javax.swing.JFrame {
                     }
 
                 }
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(this, "your ticket has been booked successfully]\nYou will be redirected to the main page now");
+                this.dispose();
+                if (User.getInstance().getRole().equals("Admin")) {
+                    new AdminMainPage().setVisible(true);
+                } else {
+                    new mainPage().setVisible(true);
+                }
 
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Failed to book movie ");
             }
-        }else {
+        } else {
             JOptionPane.showMessageDialog(this, "Please choose a time");
         }
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void radio1_h1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio1_h1ActionPerformed
-      
+
     }//GEN-LAST:event_radio1_h1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (User.getInstance().getRole().equals("Admin")){
+        if (User.getInstance().getRole().equals("Admin")) {
             new AdminMainPage().setVisible(true);
-        }else {
+        } else {
             new mainPage().setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -364,7 +372,7 @@ public class Book extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Book(new Movie("src/Avengers.png","Avengers : Infinty War")).setVisible(true);
+                new Book(new Movie("src/Avengers.png", "Avengers : Infinty War")).setVisible(true);
             }
         });
     }

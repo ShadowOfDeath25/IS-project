@@ -46,9 +46,7 @@ public class mainPage extends javax.swing.JFrame {
         jScrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         moviesPanel.setLayout(new WrapLayout(FlowLayout.LEFT));
       
-        for (int i = 0; i < 50; i++) {
-            moviesPanel.add(new Movie("src/Avengers.png", "Avengers : Infinty War"));
-        }
+       
         try {
 
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema", "root", "");

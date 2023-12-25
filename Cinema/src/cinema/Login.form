@@ -73,7 +73,7 @@
   <SubComponents>
     <Container class="javax.swing.JPanel" name="mainPanel">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){  @Override&#xd;&#xa;            protected void paintComponent(Graphics g) {&#xd;&#xa;                super.paintComponent(g);&#xd;&#xa;                // Specify the path to your image file here&#xd;&#xa;                ImageIcon img = new ImageIcon(&quot;src/Pure Lust.jpg&quot;);&#xd;&#xa;                g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);&#xd;&#xa;            }&#xd;&#xa;        };"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){  @Override&#xd;&#xa;            protected void paintComponent(Graphics g) {&#xd;&#xa;                super.paintComponent(g);&#xd;&#xa;                // Specify the path to your image file here&#xd;&#xa;                ImageIcon img = new ImageIcon(&quot;src/Sea Blue.jpg&quot;);&#xd;&#xa;                g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);&#xd;&#xa;            }&#xd;&#xa;        };"/>
       </AuxValues>
 
       <Layout>
@@ -99,12 +99,12 @@
                   </Group>
                   <EmptySpace pref="265" max="32767" attributes="0"/>
               </Group>
+              <Component id="mainLabel" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="logInButton" min="-2" pref="76" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  <Component id="logInButton" min="-2" pref="71" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
-              <Component id="mainLabel" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -131,9 +131,9 @@
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="signUpButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="32" max="32767" attributes="0"/>
-                  <Component id="logInButton" min="-2" pref="153" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="106" max="32767" attributes="0"/>
+                  <Component id="logInButton" min="-2" pref="79" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -143,6 +143,9 @@
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT Condensed" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="e3" green="e3" red="e3" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;HTML&gt;&lt;U&gt;Sign Up&lt;/U&gt;&lt;/HTML&gt;"/>
             <Property name="autoscrolls" type="boolean" value="true"/>
@@ -176,7 +179,6 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT Condensed" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Log In"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -201,6 +203,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT Condensed" size="14" style="1"/>
             </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="e3" green="e3" red="e3" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Username"/>
           </Properties>
         </Component>
@@ -223,6 +228,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT Condensed" size="14" style="1"/>
             </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="e3" green="e3" red="e3" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Password"/>
           </Properties>
         </Component>
@@ -235,6 +243,9 @@
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT Condensed" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="e3" green="e3" red="e3" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Don&apos;t have an account ?"/>
           </Properties>

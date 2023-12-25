@@ -30,7 +30,7 @@ public class ShowData extends javax.swing.JFrame {
        edit2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
        edit4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
        try{
-          con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema?zeroDateTimeBehavior=CONVERT_TO_NULL","root","abdonwar123");
+          con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema?zeroDateTimeBehavior=CONVERT_TO_NULL","root","");
        }catch(SQLException ex){
            JOptionPane.showMessageDialog(this, "Connection to the database failed\n"+ex);
        }

@@ -8,44 +8,35 @@ import java.awt.Color;
 import java.awt.Cursor;
 import javax.swing.JOptionPane;
 import java.sql.*;
+
 /**
  *
  * @author abdo2
  */
 public class ShowData extends javax.swing.JFrame {
-    Connection con ; 
-    PreparedStatement pst ;
 
+    Connection con;
+    PreparedStatement pst;
 
-    public ShowData(){
+    public ShowData() {
         initComponents();
-       username.setText(User.getInstance().getUsername());
-       fullName.setText(User.getInstance().getFullName());
-       phoneNumber.setText(User.getInstance().getPhoneNum());
-       role.setText(User.getInstance().getRole());       
-       age.setText(Integer.toString(User.getInstance().getAge()));
-       
-       edit.setCursor((Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)));
-       edit1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-       edit2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-       edit4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-       try{
-          con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema?zeroDateTimeBehavior=CONVERT_TO_NULL","root","");
-       }catch(SQLException ex){
-           JOptionPane.showMessageDialog(this, "Connection to the database failed\n"+ex);
-       }
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-             
-     
+        username.setText(User.getInstance().getUsername());
+        fullName.setText(User.getInstance().getFullName());
+        phoneNumber.setText(User.getInstance().getPhoneNum());
+        role.setText(User.getInstance().getRole());
+        age.setText(Integer.toString(User.getInstance().getAge()));
+
+        edit.setCursor((Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)));
+        edit1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        edit2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        edit4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Connection to the database failed\n" + ex);
+        }
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -61,7 +52,7 @@ public class ShowData extends javax.swing.JFrame {
             @Override
             protected void paintComponent(java.awt.Graphics g) {
                 super.paintComponent(g);
-                javax.swing.ImageIcon backgroundIcon = new javax.swing.ImageIcon("src/Pure Lust.jpg");
+                javax.swing.ImageIcon backgroundIcon = new javax.swing.ImageIcon("src/Sea Blue.jpg");
                 g.drawImage(backgroundIcon.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -84,46 +75,57 @@ public class ShowData extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         username.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
+        username.setForeground(new java.awt.Color(227, 227, 227));
         username.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         username.setText("username");
 
         age.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
+        age.setForeground(new java.awt.Color(227, 227, 227));
         age.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         age.setText("Age :");
 
         jLabel3.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(227, 227, 227));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Username :");
 
         phoneNumber.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
+        phoneNumber.setForeground(new java.awt.Color(227, 227, 227));
         phoneNumber.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         phoneNumber.setText("Phone Number :");
 
         jLabel5.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(227, 227, 227));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Age :");
 
         jLabel6.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(227, 227, 227));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Phone Number :");
 
         jLabel7.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(227, 227, 227));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Full Name:");
 
         role.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
+        role.setForeground(new java.awt.Color(227, 227, 227));
         role.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         role.setText("Role");
 
         jLabel9.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(227, 227, 227));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Role :");
 
         fullName.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
+        fullName.setForeground(new java.awt.Color(227, 227, 227));
         fullName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fullName.setText("Full Name");
 
         edit.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
+        edit.setForeground(new java.awt.Color(227, 227, 227));
         edit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         edit.setText("<HTML><U>Edit</U></HTML>");
         edit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -139,9 +141,13 @@ public class ShowData extends javax.swing.JFrame {
         });
 
         edit1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
+        edit1.setForeground(new java.awt.Color(227, 227, 227));
         edit1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         edit1.setText("<HTML><U>Edit</U></HTML>");
         edit1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                edit1MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 edit1MouseEntered(evt);
             }
@@ -151,9 +157,13 @@ public class ShowData extends javax.swing.JFrame {
         });
 
         edit2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
+        edit2.setForeground(new java.awt.Color(227, 227, 227));
         edit2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         edit2.setText("<HTML><U>Edit</U></HTML>");
         edit2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                edit2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 edit2MouseEntered(evt);
             }
@@ -163,9 +173,13 @@ public class ShowData extends javax.swing.JFrame {
         });
 
         edit4.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
+        edit4.setForeground(new java.awt.Color(227, 227, 227));
         edit4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         edit4.setText("<HTML><U>Edit</U></HTML>");
         edit4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                edit4MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 edit4MouseEntered(evt);
             }
@@ -259,7 +273,7 @@ public class ShowData extends javax.swing.JFrame {
     }//GEN-LAST:event_MouseEntered
 
     private void MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MouseExited
-        edit.setForeground(Color.black);
+        edit.setForeground(new Color (227,227,227));
     }//GEN-LAST:event_MouseExited
 
     private void edit1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit1MouseEntered
@@ -267,37 +281,76 @@ public class ShowData extends javax.swing.JFrame {
     }//GEN-LAST:event_edit1MouseEntered
 
     private void edit1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit1MouseExited
-        edit1.setForeground(Color.BLACK);
+        edit1.setForeground(new Color(227,227,227));
     }//GEN-LAST:event_edit1MouseExited
 
     private void edit2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit2MouseEntered
-       edit2.setForeground(Color.BLUE);
+        edit2.setForeground(Color.BLUE);
     }//GEN-LAST:event_edit2MouseEntered
 
     private void edit2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit2MouseExited
-        edit2.setForeground(Color.black);
+        edit2.setForeground(new Color(227,227,227));
     }//GEN-LAST:event_edit2MouseExited
 
     private void edit4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit4MouseEntered
-      edit4.setForeground(Color.blue);
+        edit4.setForeground(Color.blue);
     }//GEN-LAST:event_edit4MouseEntered
 
     private void edit4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit4MouseExited
-      edit4.setForeground(Color.BLACK);
+        edit4.setForeground(new Color(227,227,227));
     }//GEN-LAST:event_edit4MouseExited
 
     private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
-        User.getInstance().setUsername(JOptionPane.showInputDialog(this,"Enter the new Username"));
-       try{ 
-           pst = con.prepareStatement("UPDATE users SET u_username = ? WHERE u_id = ?");
-          pst.setString(1, User.getInstance().getUsername());
-          pst.setInt(2,User.getInstance().getId());
-          pst.executeUpdate();
-          username.setText(User.getInstance().getUsername());
-       }catch (SQLException ex){
-           JOptionPane.showMessageDialog(this, "Something went wrong");
-       }
+        User.getInstance().setUsername(JOptionPane.showInputDialog(this, "Enter the new Username"));
+        try {
+            pst = con.prepareStatement("UPDATE users SET u_username = ? WHERE u_id = ?");
+            pst.setString(1, User.getInstance().getUsername());
+            pst.setInt(2, User.getInstance().getId());
+            pst.executeUpdate();
+            username.setText(User.getInstance().getUsername());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Something went wrong");
+        }
     }//GEN-LAST:event_editMouseClicked
+
+    private void edit1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit1MouseClicked
+        User.getInstance().setFullName(JOptionPane.showInputDialog(this, "Enter the new full name"));
+        try {
+            pst = con.prepareStatement("UPDATE users SET u_name = ? WHERE u_id = ?");
+            pst.setString(1, User.getInstance().getFullName());
+            pst.setInt(2, User.getInstance().getId());
+            pst.executeUpdate();
+            fullName.setText(User.getInstance().getFullName());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Something went wrong");
+        }
+    }//GEN-LAST:event_edit1MouseClicked
+
+    private void edit2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit2MouseClicked
+        User.getInstance().setPhoneNum(JOptionPane.showInputDialog(this, "Enter the new phone num"));
+        try {
+            pst = con.prepareStatement("UPDATE users SET u_phone = ? WHERE u_id = ?");
+            pst.setString(1,User.getInstance().getPhoneNum());
+            pst.setInt(2, User.getInstance().getId());
+            pst.executeUpdate();
+            phoneNumber.setText(User.getInstance().getPhoneNum());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Something went wrong");
+        }
+    }//GEN-LAST:event_edit2MouseClicked
+
+    private void edit4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit4MouseClicked
+        User.getInstance().setAge(Integer.parseInt(JOptionPane.showInputDialog(this, "Enter the new age")));  
+        try {
+            pst = con.prepareStatement("UPDATE users SET u_age = ? WHERE u_id = ?");
+            pst.setInt(1,Integer.parseInt(age.getText()));
+            pst.setInt(2, User.getInstance().getId());
+            pst.executeUpdate();
+            age.setText(Integer.toString(User.getInstance().getAge()));
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Something went wrong");
+        }
+    }//GEN-LAST:event_edit4MouseClicked
 
     /**
      * @param args the command line arguments

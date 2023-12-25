@@ -154,6 +154,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         mainLabel.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 36)); // NOI18N
+        mainLabel.setForeground(new java.awt.Color(227, 227, 227));
         mainLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mainLabel.setText("BFCAI Cinema ");
         mainLabel.setAlignmentX(100.0F);

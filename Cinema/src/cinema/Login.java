@@ -46,7 +46,7 @@ public class Login extends javax.swing.JFrame {
         mainPanel.add(lbl);
 
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema", "root", "abdonwar123");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema", "root", "");
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Connection to the database failed , please restart the app \nif this error occurs again please consult a technichan");
@@ -58,13 +58,13 @@ public class Login extends javax.swing.JFrame {
         hidePword = new ImageIcon("src/hide.png").getImage();
         showIcon = new ImageIcon(showPword.getScaledInstance(showPass.getWidth(), showPass.getHeight(), Image.SCALE_SMOOTH));
         hideIcon = new ImageIcon(hidePword.getScaledInstance(showPass.getWidth(), showPass.getHeight(), Image.SCALE_SMOOTH));
-        logInIcon = new ImageIcon(logInImage.getScaledInstance(logInButton.getWidth(), logInButton.getHeight() - 30, Image.SCALE_SMOOTH));
+        logInIcon = new ImageIcon(logInImage.getScaledInstance(logInButton.getWidth(), logInButton.getHeight(), Image.SCALE_SMOOTH));
 
         showPass.setIcon(showIcon);
         showPass.setSelectedIcon(hideIcon);
 
         logInButton.setIcon(logInIcon);
-        logInButton.setText("     Log In");
+       
         logInButton.setVerticalTextPosition(JLabel.BOTTOM);
         logInButton.setHorizontalTextPosition(JLabel.CENTER);
 
@@ -106,7 +106,7 @@ public class Login extends javax.swing.JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Specify the path to your image file here
-                ImageIcon img = new ImageIcon("src/Pure Lust.jpg");
+                ImageIcon img = new ImageIcon("src/Sea Blue.jpg");
                 g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
             }
         };
@@ -137,6 +137,7 @@ public class Login extends javax.swing.JFrame {
         setResizable(false);
 
         signUpButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
+        signUpButton.setForeground(new java.awt.Color(227, 227, 227));
         signUpButton.setText("<HTML><U>Sign Up</U></HTML>");
         signUpButton.setAutoscrolls(true);
         signUpButton.setFocusable(false);
@@ -159,7 +160,6 @@ public class Login extends javax.swing.JFrame {
         mainLabel.setAlignmentY(5.0F);
 
         logInButton.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
-        logInButton.setText("Log In");
         logInButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logInButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -172,12 +172,14 @@ public class Login extends javax.swing.JFrame {
         user.setBorder(null);
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(227, 227, 227));
         jLabel1.setText("Username");
 
         pass.setBackground(new java.awt.Color(60, 65, 63));
         pass.setBorder(null);
 
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(227, 227, 227));
         jLabel2.setText("Password");
 
         showPass.addActionListener(new java.awt.event.ActionListener() {
@@ -187,6 +189,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(227, 227, 227));
         jLabel3.setText("Don't have an account ?");
 
         mainLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -211,11 +214,11 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(showPass))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(265, Short.MAX_VALUE))
+            .addComponent(mainLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(logInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
-            .addComponent(mainLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,8 +243,8 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(signUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(logInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addComponent(logInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 

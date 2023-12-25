@@ -32,7 +32,7 @@ public class Admin_Page extends javax.swing.JFrame {
         TextField_Phone.setBackground(new Color(0,0,0,1));
         TextField_Age.setBackground(new Color(0,0,0,1));
         try{
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema","root","abdonwar123");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema","root","");
        
         }catch(SQLException e){
            JOptionPane.showMessageDialog(this, "Connection to the database failed , please restart the app \nif this error occurs again please consult a technichan");

@@ -77,7 +77,7 @@ public class mainPage extends javax.swing.JFrame {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundIcon = new ImageIcon("src/Pure Lust.jpg");
+                ImageIcon backgroundIcon = new ImageIcon("src/Sea Blue.jpg");
                 g.drawImage(backgroundIcon.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -99,6 +99,7 @@ public class mainPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 showProfileData(evt);

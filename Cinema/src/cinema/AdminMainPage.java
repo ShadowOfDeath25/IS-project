@@ -43,9 +43,7 @@ public class AdminMainPage extends javax.swing.JFrame {
         jScrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         moviesPanel.setLayout(new WrapLayout(FlowLayout.LEFT));
 
-        for (int i = 0; i < 50; i++) {
-            moviesPanel.add(new Movie("src/Avengers.png", "Avengers : Infinty War"));
-        }
+       
         try {
 
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema", "root", "");
@@ -76,7 +74,7 @@ public class AdminMainPage extends javax.swing.JFrame {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundIcon = new ImageIcon("src/Pure Lust.jpg");
+                ImageIcon backgroundIcon = new ImageIcon("src/Sea Blue.jpg");
                 g.drawImage(backgroundIcon.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -99,6 +97,7 @@ public class AdminMainPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 showProfileData(evt);
@@ -194,7 +193,7 @@ public class AdminMainPage extends javax.swing.JFrame {
 
     private void showProfileData(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showProfileData
         this.dispose();
-        //   new ShowData(this.getUser()).setVisible(true);
+       new ShowData().setVisible(true);
     }//GEN-LAST:event_showProfileData
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed

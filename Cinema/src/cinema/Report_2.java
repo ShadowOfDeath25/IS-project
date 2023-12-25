@@ -31,12 +31,12 @@ DefaultTableModel dtm;
         initComponents();
           this.setLocationRelativeTo(null);
         dtm=new DefaultTableModel();
-        dtm.addColumn("User ID");
-        dtm.addColumn("Movie ID");
+        dtm.addColumn("User Name");
+        dtm.addColumn("Movie Title");
         dtm.addColumn("Ticket Number");
         dtm.addColumn("Hall");
  try{
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema","root","abdonwar123");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema","root","280904");
        
         }catch(SQLException e){
            JOptionPane.showMessageDialog(this, "Connection to the database failed , please restart the app \nif this error occurs again please consult a technichan");
@@ -50,17 +50,30 @@ try{
  PreparedStatement stmt1 = con.prepareStatement("select m_title, m_id from movies");
  PreparedStatement stmt2 = con.prepareStatement("select u_name, u_id from users");
   ResultSet rs =stmt.executeQuery();
+    if (!rs.isBeforeFirst()) {
+            System.out.println("ResultSet is empty");
+            return;
+        }
  while(rs.next()){
       int u_id = rs.getInt("u_id");
             int m_id = rs.getInt("m_id");
+            
+            
+            
       PreparedStatement stmt4 = con.prepareStatement("SELECT u_name FROM users WHERE u_id = ?");
              stmt4.setInt(1, u_id);
              ResultSet rsUName = stmt4.executeQuery();
-             String u_name = rsUName.getString("u_name");
+               String u_name = "";
+            if (rsUName.next()) {
+                u_name = rsUName.getString("u_name");
+            }
+             
+             
+             
+             
     PreparedStatement stmt5 = con.prepareStatement("SELECT m_title FROM movies WHERE m_id = ?");
             stmt5.setInt(1, m_id);
             ResultSet rsMTitle = stmt5.executeQuery();
-
             String m_title = "";
             if (rsMTitle.next()) {
                 m_title = rsMTitle.getString("m_title");
@@ -78,29 +91,22 @@ try{
         Logger.getLogger(Report_2.class.getName()).log(Level.SEVERE, null, ex);
     }
 }
-private void totaltickets(ResultSet rs) {
-    int totalTickets = 0; // Initialize total tickets counter
 
-    try {
-        // Existing code to fetch data and populate the table
+ private int getTotalTickets() {
+        int totalTickets = 0;
+        try {
+            PreparedStatement stmt = con.prepareStatement("SELECT SUM(t_no) AS total FROM tickets");
+            ResultSet rs = stmt.executeQuery();
 
-        // Loop through ResultSet and calculate total tickets
-        while (rs.next()) {
-            int t_no = rs.getInt("t_no");
-            totalTickets += t_no; // Increment total tickets by the value in the t_no column
+            if (rs.next()) {
+                totalTickets = rs.getInt("total");
+            }
 
-            // Your existing code to populate the table model remains the same
+        } catch (SQLException ex) {
+            Logger.getLogger(Report_2.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        // Set the label text to display total tickets
-        jLabel2.setText("Total Tickets: " + totalTickets);
-
-        // Set the table model after populating the data
-        jTable2.setModel(dtm);
-    } catch (SQLException ex) {
-        Logger.getLogger(Report_2.class.getName()).log(Level.SEVERE, null, ex);
+        return totalTickets;
     }
-}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -247,10 +253,14 @@ private void totaltickets(ResultSet rs) {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
+            public void run() {                     
             Report_2 reportFrame = new Report_2();
-                 reportFrame.filltable();
+                 reportFrame.filltable(); 
+                 
+                     int totalTickets = reportFrame.getTotalTickets();
+                reportFrame.jLabel2.setText("Total Tickets:  " + totalTickets);
+                
+                
                  reportFrame.setVisible(true);
             }
         });

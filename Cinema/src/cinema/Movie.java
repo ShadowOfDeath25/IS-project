@@ -15,6 +15,7 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 /**
  *
  * @author abdo2
@@ -22,10 +23,12 @@ import javax.swing.JOptionPane;
 public class Movie extends JLabel{
     Image cover ;
     ImageIcon coverIcon;
-    
+    String movieTitle;
+    Movie currMovie = this;
+   
     
     public Movie(String coverPath , String title){
-         
+        movieTitle = title ;
         this.setText(title);
         this.setSize(100,220);
         cover = new ImageIcon(coverPath).getImage();
@@ -49,7 +52,10 @@ public class Movie extends JLabel{
         this.addMouseListener(new MouseAdapter(){
         @Override 
         public void mouseClicked(MouseEvent e){
-            JOptionPane.showMessageDialog(null, "TBD");
+         
+          new Book(currMovie).setVisible(true); 
+          SwingUtilities.getWindowAncestor(currMovie).dispose();
+    
         }
         @Override 
         public void mouseEntered(MouseEvent e){

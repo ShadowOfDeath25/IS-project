@@ -143,6 +143,7 @@ public class Admin_Page extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(227, 227, 227));
         jLabel4.setText("Username");
 
+        Search_Button.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         Search_Button.setText("Search");
         Search_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,6 +159,7 @@ public class Admin_Page extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(227, 227, 227));
         jLabel6.setText("Username :");
 
+        TextField_Username.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         TextField_Username.setForeground(new java.awt.Color(227, 227, 227));
         TextField_Username.setBorder(null);
 
@@ -173,15 +175,19 @@ public class Admin_Page extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(227, 227, 227));
         jLabel2.setText("Age :");
 
+        TextField_Name.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         TextField_Name.setForeground(new java.awt.Color(227, 227, 227));
         TextField_Name.setBorder(null);
 
+        TextField_Phone.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         TextField_Phone.setForeground(new java.awt.Color(227, 227, 227));
         TextField_Phone.setBorder(null);
 
+        TextField_Age.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         TextField_Age.setForeground(new java.awt.Color(227, 227, 227));
         TextField_Age.setBorder(null);
 
+        Update_button.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         Update_button.setText("Update");
         Update_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,13 +196,16 @@ public class Admin_Page extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jRadioButton1.setForeground(new java.awt.Color(227, 227, 227));
         jRadioButton1.setText("Admin");
 
         buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jRadioButton2.setForeground(new java.awt.Color(227, 227, 227));
         jRadioButton2.setText("User");
 
+        Delete_Button1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         Delete_Button1.setText("Delete");
         Delete_Button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,6 +213,7 @@ public class Admin_Page extends javax.swing.JFrame {
             }
         });
 
+        Refresh_Button2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         Refresh_Button2.setText("Refresh");
         Refresh_Button2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,6 +221,7 @@ public class Admin_Page extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButton1.setText("Report");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,6 +229,7 @@ public class Admin_Page extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,7 +307,7 @@ public class Admin_Page extends javax.swing.JFrame {
                     .addComponent(Search_Button))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextField_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))

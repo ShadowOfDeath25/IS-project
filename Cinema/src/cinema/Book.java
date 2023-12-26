@@ -89,32 +89,37 @@ public class Book extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 3, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("God Father I");
         jLabel1.setFocusable(false);
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        jLabel2.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("HALL 3");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        jLabel3.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("HALL 1");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        jLabel4.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("HALL 2");
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         buttonGroup1.add(radio3_h1);
+        radio3_h1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         radio3_h1.setText("9 : 00 PM");
 
         buttonGroup1.add(radio1_h1);
+        radio1_h1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         radio1_h1.setText("3 : 00 PM");
         radio1_h1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,26 +128,34 @@ public class Book extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(radio2_h1);
+        radio2_h1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         radio2_h1.setText("6 : 00 PM");
 
         buttonGroup1.add(radio3_h2);
+        radio3_h2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         radio3_h2.setText("9 : 00 PM");
 
         buttonGroup1.add(radio2_h2);
+        radio2_h2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         radio2_h2.setText("6 : 00 PM");
 
         buttonGroup1.add(radio1_h2);
+        radio1_h2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         radio1_h2.setText("3 : 00 PM");
 
         buttonGroup1.add(radio1_h3);
+        radio1_h3.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         radio1_h3.setText("3 : 00 PM");
 
         buttonGroup1.add(radio2_h3);
+        radio2_h3.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         radio2_h3.setText("6 : 00 PM");
 
         buttonGroup1.add(radio3_h3);
+        radio3_h3.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         radio3_h3.setText("9 : 00 PM");
 
+        jButton1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButton1.setText("BACK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,6 +163,7 @@ public class Book extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButton2.setText("BOOK");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,8 +177,8 @@ public class Book extends javax.swing.JFrame {
             pnl1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(pnl1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(radio2_h1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)

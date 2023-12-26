@@ -105,6 +105,7 @@ public class Tickets extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(227, 227, 227));
         jLabel1.setText("Your Tickets :");
 
+        jButton1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jButton1.setText("Back");
         jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {

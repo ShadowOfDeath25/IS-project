@@ -75,7 +75,7 @@ public class mainPage extends javax.swing.JFrame {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundIcon = new ImageIcon("src/Sea Blue.jpg");
+                ImageIcon backgroundIcon = new ImageIcon("src/Gradient.png");
                 g.drawImage(backgroundIcon.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -88,13 +88,14 @@ public class mainPage extends javax.swing.JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Specify the path to your image file here
-                ImageIcon img = new ImageIcon("src/Sea Blue.jpg");
+                ImageIcon img = new ImageIcon("src/Gradient.png");
                 g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
             }
         };
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        tickets.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         tickets.setText("Your Tickets");
         tickets.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +103,7 @@ public class mainPage extends javax.swing.JFrame {
             }
         });
 
+        Back.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         Back.setText("Back");
         Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

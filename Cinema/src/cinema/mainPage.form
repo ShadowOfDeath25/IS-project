@@ -42,7 +42,7 @@
   <SubComponents>
     <Container class="javax.swing.JPanel" name="mainPanel">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel() {&#xd;&#xa;            @Override&#xd;&#xa;            protected void paintComponent(Graphics g) {&#xd;&#xa;                super.paintComponent(g);&#xd;&#xa;                ImageIcon backgroundIcon = new ImageIcon(&quot;src/Sea Blue.jpg&quot;);&#xd;&#xa;                g.drawImage(backgroundIcon.getImage(), 0, 0, getWidth(), getHeight(), this);&#xd;&#xa;            }&#xd;&#xa;        };&#xd;&#xa;"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel() {&#xd;&#xa;            @Override&#xd;&#xa;            protected void paintComponent(Graphics g) {&#xd;&#xa;                super.paintComponent(g);&#xd;&#xa;                ImageIcon backgroundIcon = new ImageIcon(&quot;src/Gradient.png&quot;);&#xd;&#xa;                g.drawImage(backgroundIcon.getImage(), 0, 0, getWidth(), getHeight(), this);&#xd;&#xa;            }&#xd;&#xa;        };&#xd;&#xa;"/>
         <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
       </AuxValues>
@@ -102,6 +102,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="tickets">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tw Cen MT Condensed" size="14" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Your Tickets"/>
           </Properties>
           <Events>
@@ -110,6 +113,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="Back">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tw Cen MT Condensed" size="14" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Back"/>
           </Properties>
           <Events>
@@ -138,7 +144,7 @@
         </Component>
         <Container class="javax.swing.JPanel" name="moviesPanel">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){  @Override&#xd;&#xa;            protected void paintComponent(Graphics g) {&#xd;&#xa;                super.paintComponent(g);&#xd;&#xa;                // Specify the path to your image file here&#xd;&#xa;                ImageIcon img = new ImageIcon(&quot;src/Sea Blue.jpg&quot;);&#xd;&#xa;                g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);&#xd;&#xa;            }&#xd;&#xa;        };"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){  @Override&#xd;&#xa;            protected void paintComponent(Graphics g) {&#xd;&#xa;                super.paintComponent(g);&#xd;&#xa;                // Specify the path to your image file here&#xd;&#xa;                ImageIcon img = new ImageIcon(&quot;src/Gradient.png&quot;);&#xd;&#xa;                g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);&#xd;&#xa;            }&#xd;&#xa;        };"/>
           </AuxValues>
 
           <Layout>

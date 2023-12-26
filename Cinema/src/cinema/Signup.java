@@ -142,21 +142,27 @@ public class Signup extends javax.swing.JFrame {
         fullName.setForeground(new java.awt.Color(227, 227, 227));
         fullName.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(227, 227, 227));
         jLabel1.setText("Username");
 
+        jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(227, 227, 227));
         jLabel2.setText("Full name");
 
+        jLabel3.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(227, 227, 227));
         jLabel3.setText("Age");
 
+        jLabel4.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(227, 227, 227));
         jLabel4.setText("Phone number");
 
+        jLabel5.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(227, 227, 227));
         jLabel5.setText("Passowrd");
 
+        jLabel6.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(227, 227, 227));
         jLabel6.setText("Confirm password");
 
@@ -178,6 +184,7 @@ public class Signup extends javax.swing.JFrame {
             }
         });
 
+        male.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         male.setForeground(new java.awt.Color(227, 227, 227));
         male.setText("Male");
 
@@ -189,6 +196,7 @@ public class Signup extends javax.swing.JFrame {
             }
         });
 
+        back.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         back.setText("Back");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,6 +204,7 @@ public class Signup extends javax.swing.JFrame {
             }
         });
 
+        confirm.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
         confirm.setText("Sign up");
         confirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -321,7 +330,7 @@ public class Signup extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(male)
                     .addComponent(female))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))

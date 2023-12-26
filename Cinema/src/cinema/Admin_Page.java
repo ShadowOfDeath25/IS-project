@@ -28,6 +28,8 @@ public class Admin_Page extends javax.swing.JFrame {
 
     public Admin_Page() {
         initComponents();
+        Image icon = new ImageIcon("src/reelicon.png").getImage();
+        this.setIconImage(icon);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         TextField_Name.setBackground(new Color(0, 0, 0, 1));
@@ -63,7 +65,7 @@ public class Admin_Page extends javax.swing.JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Specify the path to your image file here
-                ImageIcon img = new ImageIcon("src/Sea Blue.jpg");
+                ImageIcon img = new ImageIcon("src/Gradient.png");
                 g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
             }
         };
@@ -96,7 +98,7 @@ public class Admin_Page extends javax.swing.JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Specify the path to your image file here
-                ImageIcon img = new ImageIcon("src/Sea Blue.jpg");
+                ImageIcon img = new ImageIcon("src/Gradient.png");
                 g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
             }
         };

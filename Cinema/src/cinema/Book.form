@@ -44,7 +44,7 @@
   <SubComponents>
     <Container class="javax.swing.JPanel" name="pnl1">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){  @Override&#xd;&#xa;            protected void paintComponent(Graphics g) {&#xd;&#xa;                super.paintComponent(g);&#xd;&#xa;                // Specify the path to your image file here&#xd;&#xa;                ImageIcon img = new ImageIcon(&quot;src/Sea Blue.jpg&quot;);&#xd;&#xa;                g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);&#xd;&#xa;        }&#xd;&#xa;};"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JPanel(){  @Override&#xd;&#xa;            protected void paintComponent(Graphics g) {&#xd;&#xa;                super.paintComponent(g);&#xd;&#xa;                // Specify the path to your image file here&#xd;&#xa;                ImageIcon img = new ImageIcon(&quot;src/Gradient.png&quot;);&#xd;&#xa;                g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);&#xd;&#xa;        }&#xd;&#xa;};"/>
       </AuxValues>
 
       <Layout>

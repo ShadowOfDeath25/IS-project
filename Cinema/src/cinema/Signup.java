@@ -31,9 +31,13 @@ public class Signup extends javax.swing.JFrame {
     Image hidePass2;
     Connection con;
     PreparedStatement pst;
-    
+
     public Signup() {
         initComponents();
+        Image icon = new ImageIcon("src/reelicon.png").getImage();
+        this.setIconImage(icon);
+        this.setTitle("ReelTime");
+
         jLabel1.setFont(new Font("Tw Cen MT Condensed", Font.BOLD, 14));
         jLabel2.setFont(new Font("Tw Cen MT Condensed", Font.BOLD, 14));
         jLabel3.setFont(new Font("Tw Cen MT Condensed", Font.BOLD, 14));
@@ -42,7 +46,7 @@ public class Signup extends javax.swing.JFrame {
         jLabel6.setFont(new Font("Tw Cen MT Condensed", Font.BOLD, 14));
         male.setFont(new Font("Tw Cen MT Condensed", Font.BOLD, 14));
         female.setFont(new Font("Tw Cen MT Condensed", Font.BOLD, 14));
-        
+
         showPass2 = new ImageIcon("src/show.png").getImage();
         hidePass2 = new ImageIcon("src/hide.png").getImage();
         showPass = new ImageIcon(showPass2.getScaledInstance(showPassword1.getWidth(), showPassword1.getHeight(), Image.SCALE_SMOOTH));
@@ -51,25 +55,24 @@ public class Signup extends javax.swing.JFrame {
         showPassword2.setIcon(showPass);
         showPassword1.setSelectedIcon(hidePass);
         showPassword2.setSelectedIcon(hidePass);
-        
+
         username.setBackground(new Color(0, 0, 0, 1));
         fullName.setBackground(new Color(0, 0, 0, 1));
         phoneNum.setBackground(new Color(0, 0, 0, 1));
         age.setBackground(new Color(0, 0, 0, 1));
         password.setBackground(new Color(0, 0, 0, 1));
         confirmPassword.setBackground(new Color(0, 0, 0, 1));
-        
+
         ButtonGroup btns = new ButtonGroup();
         btns.add(male);
         btns.add(female);
 
-       
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema", "root", "");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Connection to the database failed , please restart the app \nif this error occurs again please consult a technichan");
         }
-        
+
         this.setLocationRelativeTo(null);
     }
 
@@ -87,7 +90,7 @@ public class Signup extends javax.swing.JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Specify the path to your image file here
-                ImageIcon img = new ImageIcon("src/Pure Lust.jpg");
+                ImageIcon img = new ImageIcon("src/Gradient.png");
                 g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
             }
         };
@@ -121,31 +124,43 @@ public class Signup extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mainLabel.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 36)); // NOI18N
+        mainLabel.setForeground(new java.awt.Color(227, 227, 227));
         mainLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        mainLabel.setText("BFCAI Cinema ");
+        mainLabel.setText("Sign Up");
         mainLabel.setAlignmentX(100.0F);
         mainLabel.setAlignmentY(5.0F);
 
+        username.setForeground(new java.awt.Color(227, 227, 227));
         username.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
+        age.setForeground(new java.awt.Color(227, 227, 227));
         age.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
+        phoneNum.setForeground(new java.awt.Color(227, 227, 227));
         phoneNum.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
+        fullName.setForeground(new java.awt.Color(227, 227, 227));
         fullName.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
+        jLabel1.setForeground(new java.awt.Color(227, 227, 227));
         jLabel1.setText("Username");
 
+        jLabel2.setForeground(new java.awt.Color(227, 227, 227));
         jLabel2.setText("Full name");
 
+        jLabel3.setForeground(new java.awt.Color(227, 227, 227));
         jLabel3.setText("Age");
 
+        jLabel4.setForeground(new java.awt.Color(227, 227, 227));
         jLabel4.setText("Phone number");
 
+        jLabel5.setForeground(new java.awt.Color(227, 227, 227));
         jLabel5.setText("Passowrd");
 
+        jLabel6.setForeground(new java.awt.Color(227, 227, 227));
         jLabel6.setText("Confirm password");
 
+        password.setForeground(new java.awt.Color(227, 227, 227));
         password.setBorder(null);
 
         showPassword1.addActionListener(new java.awt.event.ActionListener() {
@@ -154,6 +169,7 @@ public class Signup extends javax.swing.JFrame {
             }
         });
 
+        confirmPassword.setForeground(new java.awt.Color(227, 227, 227));
         confirmPassword.setBorder(null);
 
         showPassword2.addActionListener(new java.awt.event.ActionListener() {
@@ -162,8 +178,10 @@ public class Signup extends javax.swing.JFrame {
             }
         });
 
+        male.setForeground(new java.awt.Color(227, 227, 227));
         male.setText("Male");
 
+        female.setForeground(new java.awt.Color(227, 227, 227));
         female.setText("Female");
         female.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,23 +209,18 @@ public class Signup extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(307, 307, 307)
-                                .addComponent(mainLabel))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(male)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(female)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(mainLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -218,7 +231,7 @@ public class Signup extends javax.swing.JFrame {
                                         .addComponent(jLabel2)
                                         .addComponent(fullName, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -240,30 +253,30 @@ public class Signup extends javax.swing.JFrame {
                                         .addComponent(confirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(showPassword2))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(male)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(female))
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(90, 90, 90)
+                .addGap(64, 64, 64)
                 .addComponent(mainLabel)
-                .addGap(55, 55, 55)
+                .addGap(81, 81, 81)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
@@ -334,7 +347,7 @@ public class Signup extends javax.swing.JFrame {
     private void showPassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPassword1ActionPerformed
         if (showPassword1.isSelected()) {
             password.setEchoChar((char) 0);
-            
+
         } else {
             password.setEchoChar('*');
         }
@@ -358,9 +371,9 @@ public class Signup extends javax.swing.JFrame {
     }//GEN-LAST:event_backActionPerformed
 
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
-        
+
         if ((username.getText().length() > 0) && (password.getText().length() > 0) && (age.getText().length() > 0) && (phoneNum.getText().length() > 0) && (confirmPassword.getText().length() > 0) && (fullName.getText().length() > 0) && (male.isSelected() || female.isSelected())) {
-            
+
             if (!password.getText().equals(confirmPassword.getText())) {
                 JOptionPane.showMessageDialog(this, "Passowrd don't match");
             } else if (!age.getText().matches("\\d+")) {
@@ -395,18 +408,18 @@ public class Signup extends javax.swing.JFrame {
                     } else {
                         JOptionPane.showMessageDialog(this, "Something went wrong \n" + e + "\n");
                     }
-                    
-                }                
-                
+
+                }
+
             }
-            
+
         } else {
             JOptionPane.showMessageDialog(this, "one or more fields are empty");
         }
-        
+
 
     }//GEN-LAST:event_confirmActionPerformed
-    
+
     public static String hashPassword(String password) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         byte[] hashedPassword = md.digest(password.getBytes());

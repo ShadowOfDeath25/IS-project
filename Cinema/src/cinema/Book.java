@@ -36,9 +36,11 @@ public class Book extends javax.swing.JFrame {
     public Book(Movie movie) {
 
         initComponents();
+        Image icon = new ImageIcon("src/reelicon.png").getImage();
+        this.setIconImage(icon);
+        this.setTitle("ReelTime");
         this.setLocationRelativeTo(null);
-        //Image icon = new ImageIcon(this.getClass().getResource("\\popcorn.png")).getImage();
-        // this.setIconImage(icon);
+       
         currMovie = movie;
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema", "root", "");
@@ -64,7 +66,7 @@ public class Book extends javax.swing.JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Specify the path to your image file here
-                ImageIcon img = new ImageIcon("src/Sea Blue.jpg");
+                ImageIcon img = new ImageIcon("src/Gradient.png");
                 g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
             }
         };

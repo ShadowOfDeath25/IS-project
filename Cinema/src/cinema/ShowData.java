@@ -6,8 +6,10 @@ package cinema;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Image;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -20,6 +22,9 @@ public class ShowData extends javax.swing.JFrame {
 
     public ShowData() {
         initComponents();
+         Image icon = new ImageIcon("src/reelicon.png").getImage();
+        this.setIconImage(icon);
+        this.setTitle("ReelTime");
         username.setText(User.getInstance().getUsername());
         fullName.setText(User.getInstance().getFullName());
         phoneNumber.setText(User.getInstance().getPhoneNum());
@@ -52,7 +57,7 @@ public class ShowData extends javax.swing.JFrame {
             @Override
             protected void paintComponent(java.awt.Graphics g) {
                 super.paintComponent(g);
-                javax.swing.ImageIcon backgroundIcon = new javax.swing.ImageIcon("src/Sea Blue.jpg");
+                javax.swing.ImageIcon backgroundIcon = new javax.swing.ImageIcon("src/Gradient.png");
                 g.drawImage(backgroundIcon.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };

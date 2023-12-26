@@ -33,22 +33,12 @@ public class Movie extends JLabel{
         this.setSize(100,220);
         cover = new ImageIcon(coverPath).getImage();
         coverIcon = new ImageIcon(cover.getScaledInstance(100,200,Image.SCALE_SMOOTH));
-        int borderThickness = 5 ;
-        Color borderColor =Color.BLACK;
-        int width = coverIcon.getIconWidth() + (2*borderThickness);
-        int height = coverIcon.getIconHeight() + (2*borderThickness);
-        BufferedImage borderedImage =new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g= borderedImage.createGraphics();
-        g.setColor(borderColor);
-        g.fillRect(0, 0, width, height);
-        g.drawImage(coverIcon.getImage(), borderThickness,borderThickness,null);
-        g.dispose();
-        ImageIcon borderedIcon = new ImageIcon (borderedImage.getScaledInstance(100,200, Image.SCALE_SMOOTH));
         this.setIcon(coverIcon);
-        this.setFont(new Font ("Tw Cen MT Condensed", Font.BOLD, 14));
+        this.setFont(new Font ("Tw Cen MT Condensed", Font.BOLD, 12));
         this.setVerticalTextPosition(JLabel.BOTTOM);
         this.setHorizontalTextPosition(JLabel.CENTER);
         this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        this.setForeground(new Color(227,227,227));
         this.addMouseListener(new MouseAdapter(){
         @Override 
         public void mouseClicked(MouseEvent e){

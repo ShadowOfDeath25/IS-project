@@ -22,31 +22,29 @@ public class mainPage extends javax.swing.JFrame {
     ImageIcon profileIcon;
     Connection con;
     PreparedStatement pst;
-  
 
     /**
      * Creates new form mainPage
-     * 
+     *
      */
-   
     public mainPage() {
         initComponents();
-        
-        
+        Image icon = new ImageIcon("src/reelicon.png").getImage();
+        this.setIconImage(icon);
+        this.setTitle("ReelTime");
+
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         profile = new ImageIcon("src/profile.png").getImage();
         profileIcon = new ImageIcon(profile.getScaledInstance(jLabel1.getWidth(), jLabel1.getWidth(), Image.SCALE_SMOOTH));
         jLabel1.setIcon(profileIcon);
-        jScrollPane1.getVerticalScrollBar().setUnitIncrement(10);
-       // moviesPanel.setBackground(new Color(0, 0, 0, 1));
+
+        // moviesPanel.setBackground(new Color(0, 0, 0, 1));
         moviesPanel.setOpaque(false);
         jLabel2.setText(User.getInstance().getFullName());
-        jScrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        jScrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         moviesPanel.setLayout(new WrapLayout(FlowLayout.LEFT));
-      
-       
+
         try {
 
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinema", "root", "");
@@ -58,11 +56,11 @@ public class mainPage extends javax.swing.JFrame {
             }
 
         } catch (SQLException e) {
-           JOptionPane.showMessageDialog(this ,"Couldn't load movies due to an error at the database\nPlease consult a technichan");
+            JOptionPane.showMessageDialog(this, "Couldn't load movies due to an error at the database\nPlease consult a technichan");
         }
 
     }
-   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,21 +80,34 @@ public class mainPage extends javax.swing.JFrame {
             }
         };
         ;
+        tickets = new javax.swing.JButton();
+        Back = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        moviesPanel = new javax.swing.JPanel() {
-            @Override
-            protected void paintComponent(java.awt.Graphics g) {
+        jLabel2 = new javax.swing.JLabel();
+        moviesPanel = new JPanel(){  @Override
+            protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                javax.swing.ImageIcon backgroundIcon = new javax.swing.ImageIcon("src/trans.png");
-                g.drawImage(backgroundIcon.getImage(), 0, 0, getWidth(), getHeight(), this);
+                // Specify the path to your image file here
+                ImageIcon img = new ImageIcon("src/Sea Blue.jpg");
+                g.drawImage(img.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
             }
         };
-        ;
-        jLabel2 = new javax.swing.JLabel();
-        Back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tickets.setText("Your Tickets");
+        tickets.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ticketsActionPerformed(evt);
+            }
+        });
+
+        Back.setText("Back");
+        Back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackActionPerformed(evt);
+            }
+        });
 
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -106,31 +117,20 @@ public class mainPage extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane1.setBorder(null);
+        jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout moviesPanelLayout = new javax.swing.GroupLayout(moviesPanel);
         moviesPanel.setLayout(moviesPanelLayout);
         moviesPanelLayout.setHorizontalGroup(
             moviesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 825, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         moviesPanelLayout.setVerticalGroup(
             moviesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 447, Short.MAX_VALUE)
+            .addGap(0, 481, Short.MAX_VALUE)
         );
-
-        jScrollPane1.setViewportView(moviesPanel);
-
-        jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("jLabel2");
-
-        Back.setText("Back");
-        Back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -139,15 +139,18 @@ public class mainPage extends javax.swing.JFrame {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 813, Short.MAX_VALUE)
+                    .addComponent(moviesPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 792, Short.MAX_VALUE)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(mainPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Back))))
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(tickets, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Back, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
@@ -160,10 +163,12 @@ public class mainPage extends javax.swing.JFrame {
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(96, 96, 96)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(Back, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addGap(62, 62, 62)
+                .addComponent(moviesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tickets, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -171,7 +176,9 @@ public class mainPage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,13 +190,18 @@ public class mainPage extends javax.swing.JFrame {
 
     private void showProfileData(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showProfileData
         this.dispose();
-     new ShowData().setVisible(true);
+        new ShowData().setVisible(true);
     }//GEN-LAST:event_showProfileData
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
         this.dispose();
         new Login().setVisible(true);
     }//GEN-LAST:event_BackActionPerformed
+
+    private void ticketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ticketsActionPerformed
+        this.dispose();
+        new Tickets().setVisible(true);
+    }//GEN-LAST:event_ticketsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,7 +243,7 @@ public class mainPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JOptionPane jOptionPane1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel moviesPanel;
+    private javax.swing.JButton tickets;
     // End of variables declaration//GEN-END:variables
 }
